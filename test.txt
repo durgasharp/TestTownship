@@ -1,0 +1,26 @@
+CREATE TABLE [dbo].[Rentalproperty] (
+    [BuildNo]   VARCHAR (50) NOT NULL,
+    [FlatNo]    INT          NOT NULL,
+    [Rent]      INT          NULL,
+    [OwnerName] VARCHAR (50) NULL,
+    [Email]     VARCHAR (50) NULL,
+    [MobileNo]  VARCHAR (50) NULL,
+    [FlatType]  VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([BuildNo] ASC, [FlatNo] ASC)
+);
+
+CREATE PROCEDURE [dbo].[spAddRentPost]
+	@BulidNo nvarchar(5),
+	@FlatNo int,
+    @Rent   int,
+	@FlatType nvarchar(10),
+	@OwnName nvarchar(50),
+    @Email nvarchar(50),
+    @MobileNo nvarchar(50)
+AS
+Begin
+	Insert into Rentalproperty (BuildNo, FlatNo,FlatType, Rent, OwnerName, Email, MobileNo) 
+	              Values(@BulidNo, @FlatNo,@FlatType, @Rent, @OwnName, @Email, @MobileNo)
+End
+
+https://github.com/durgasharp/townshiprental.git
